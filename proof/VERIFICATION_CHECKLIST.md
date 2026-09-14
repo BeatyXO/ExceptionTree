@@ -1,0 +1,26 @@
+# Verification checklist
+
+- [ ] `python scripts/preflight.py` passes
+- [ ] Python compileall passes
+- [ ] all Direct Mode tests pass
+- [ ] GenVM lint passes with the pinned stable contract dependency
+- [ ] stable Studionet chain ID 61999 confirmed before live writes
+- [ ] ExceptionTree deployed
+- [ ] refund example rule set created and sealed
+- [ ] definition hash is 64 hex
+- [ ] root ALLOW case resolved
+- [ ] perishable DENY case resolved
+- [ ] defect nested ALLOW case resolved
+- [ ] late-report nested DENY case resolved
+- [ ] relevant ambiguity produces AMBIGUOUS
+- [ ] equal-rank contradiction produces CONFLICT
+- [ ] second resolution attempt is rejected
+- [ ] ExceptionGate deployed against finalized ExceptionTree address
+- [ ] pinned ALLOW action succeeds
+- [ ] wrong definition hash fails
+- [ ] wrong case hash fails
+- [ ] non-ALLOW case fails
+- [ ] action replay fails
+- [ ] `python scripts/preflight.py --final` passes after real deployment fields are filled
+- [ ] final Git diff/status/tracked files inspected
+- [ ] final GitHub remote inspected after push
