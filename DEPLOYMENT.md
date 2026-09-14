@@ -51,10 +51,12 @@ The stored execution was read back from the gate and pinned both the definition
 and case hashes. Wrong definition, wrong case, case 2 (non-ALLOW), and replay of
 the successful action were each rejected with:
 `ExceptionTree does not establish ALLOW for the pinned case and ruleset` for the
-first three, and `action replay rejected` for replay.
+first three; the replay transaction returned `rollback` with
+`action replay rejected`.
 
 Case 1 was then read back and confirmed resolved; a second resolution attempt was
-rejected by the contract's `case already resolved` guard.
+rejected by the contract's `case already resolved` guard (`rollback`,
+`EXPECTED: case already resolved`).
 
 Commands used included `genlayer network info`, `genlayer deploy --contract ...`,
 `genlayer write ...`, and `genlayer call ...`, all through the stable CLI with
