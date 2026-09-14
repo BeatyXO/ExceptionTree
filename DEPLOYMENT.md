@@ -37,6 +37,13 @@ Refund definition hash: `cf9f8793de666b5cf2a26d42e0cbaf2b9613ae25f3a9afcb3ee226e
 | 3 | `cfa033efb44079648f2f01cdcb4883608a5fe39a9dea8bceb37486464b6e33df` | ALLOW | 3 | `2401be2b5d57d031741a6c19911367f0a02d5c2cfc734bb4596651d3522cf4ae` |
 | 4 | `97ce120cf5bbb6d8d9d8f80b09e2039670be905fe30c61f56091806ed92d4547` | DENY | 4 | `bec1711f2a74dbc5b8d665a49ce4a7cc43b171143bec276961ecf46e8e8fd05b` |
 | 5 | `eec8aaf28b0e6ec29290c1ea923b5e6c3111d357a5eb64d3961417fbfea9e06c` | AMBIGUOUS | 0 | `b969cdc028b25e4e78ed4dd984a72c2c4abfa6f16449fec5fb159a2a9457dfac` |
+| 7 | `9cc6d9a036b457cb7aa7cc9e633ff4a63b43b70c19a349934a524d07ed719171` | DENY | 2 | `94ed6ec1d6e881acf708d93a8af60e022c702235227ee0049dfa8008cea64ebb` |
+
+Case 7 submission transaction: `0xfe32c5b27bb39aa62b4f1a8f09dfcbc3809663bc24322d21e0bb04bc0546ed72`.
+The stable CLI output for the case 7 resolution exposed the finalized contract
+state and resolution hash but did not expose a transaction ID in the captured
+output; no replacement or duplicate transaction was sent solely to manufacture
+an ID.
 
 Contradiction ruleset ID: `2`; definition hash:
 `5b56baa9ce088076b48783479df5cb2dc48bfe9c76a29003e030a71b291346d3`.
@@ -57,6 +64,10 @@ first three; the replay transaction returned `rollback` with
 Case 1 was then read back and confirmed resolved; a second resolution attempt was
 rejected by the contract's `case already resolved` guard (`rollback`,
 `EXPECTED: case already resolved`).
+
+The original CLI output for the successful gate execution and the first negative
+gate checks did not retain their transaction IDs. Their finalized contract state
+and rejection payloads were verified live; no transaction IDs are invented here.
 
 Commands used included `genlayer network info`, `genlayer deploy --contract ...`,
 `genlayer write ...`, and `genlayer call ...`, all through the stable CLI with
